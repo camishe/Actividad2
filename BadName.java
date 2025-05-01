@@ -1,12 +1,12 @@
-//Capitulo dos
-package com.mycompany.badnames;
-
-import java.util.Scanner;
+//capitulo tres
+package com.mycompany.badname;
 
 /**
- * @author Mishelle Nuñez
+ *
+ * @author Personal
  */
-public class BadNames {
+import java.util.Scanner;
+public class BadName {
 
     // Arreglo donde guardaremos hasta 10 números
     private int[] numero = new int[10];   // Arreglo de numero hasta 10
@@ -33,19 +33,35 @@ public class BadNames {
 
     // Pequeña interfaz de consola para ejecutar y probar
     public static void main(String[] args) {
-        BadNames numeros = new BadNames();               
-        Scanner scanner = new Scanner(System.in);
+    BadName numeros = new BadName();
+    Scanner scanner = new Scanner(System.in);
 
+    int cantidad = pedirCantidad(scanner);
+    leerNumeros(scanner, numeros, cantidad);
+    mostrarResultados(numeros);
+
+    scanner.close();
+}
+
+    // Solicita al usuario la cantidad de números a ingresar
+    private static int pedirCantidad(Scanner scanner) {
         System.out.print("Cuantos numeros ingresara? ");
-        int total = scanner.nextInt();                      
+    return scanner.nextInt();
+    }
 
-        for (int k = 0; k < total; k++) {              // “k” -> contador genérico
+    // Lee los números ingresados por el usuario
+    private static void leerNumeros(Scanner scanner, BadName numeros, int cantidad) {
+        for (int i = 0; i < cantidad; i++) {
             System.out.print("Numero: ");
-            numeros.agregar(scanner.nextInt());
+            int numero = scanner.nextInt();
+            numeros.agregar(numero);
         }
+    }
 
+    // Muestra la suma y el promedio de los números
+    private static void mostrarResultados(BadName numeros) {
         System.out.println("Suma = " + numeros.suma());
         System.out.println("Promedio = " + numeros.promedio());
-        scanner.close();
     }
-} 
+}
+
